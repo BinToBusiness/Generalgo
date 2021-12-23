@@ -1,3 +1,3 @@
-module github.com/Microwatts/general
+module github.com/Microwatts/generalgo
 
 go 1.17
