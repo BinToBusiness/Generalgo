@@ -1,4 +1,4 @@
-package general
+package generalgo
 
 //NegativeNumberError é um erro personalizado para valores menos que zero.
 type NegativeNumberError struct {

@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/Microwatts/general"
+	generalgo "github.com/Microwatts/generalgo"
 )
 
 func TestStringMatch(t *testing.T) {
@@ -19,18 +19,18 @@ func TestStringMatch(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			name: "SucessMatch",
-			args: args{"Matheus Saraiva", general.PersonNameValidRegex},
+			args: args{"Matheus Saraiva", generalgo.PersonNameValidRegex},
 			want: true,
 		},
 		{
 			name: "FailMatch",
-			args: args{"Matheus Saraiv4", general.PersonNameValidRegex},
+			args: args{"Matheus Saraiv4", generalgo.PersonNameValidRegex},
 			want: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := general.StringMatch(tt.args.value, tt.args.pattern); got != tt.want {
+			if got := generalgo.StringMatch(tt.args.value, tt.args.pattern); got != tt.want {
 				t.Errorf("StringMatch() = %v, want %v", got, tt.want)
 			}
 		})
