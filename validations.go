@@ -1,7 +1,6 @@
 package generalgo
 
 import (
-	"encoding/hex"
 	"regexp"
 )
 
@@ -22,16 +21,4 @@ func StringMatch(value, pattern string) bool {
 	var rgx *regexp.Regexp = regexp.MustCompile(pattern)
 
 	return rgx.MatchString(value)
-}
-
-//ValidIDs valida se um array de bytes é uma string de ID válido
-func ValidIDs(id [12]byte) bool {
-
-	var id_s string = hex.EncodeToString(id[:])
-
-	if len(id_s) != 24 {
-		return false
-	} else if _, err := hex.DecodeString(id_s); err != nil {
-		return false
-	}
 }
