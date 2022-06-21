@@ -65,12 +65,6 @@ type CollectionElementNotFoundError struct {
 	Value string
 }
 
-//IDError é um erro personalizado para IDs NOSQL inválidos em entidades.
-type IDError struct {
-	Name  string
-	Value string
-}
-
 /*
 * Error functions
  */
@@ -182,15 +176,4 @@ func (cefe *CollectionElementNotFoundError) Error() string {
 	}
 
 	return cefe.Name + " is not present in collection. Value is " + cefe.Value
-}
-
-//Error função retorna a descrição do erro
-func (iderr *IDError) Error() string {
-
-	if len(iderr.Name) == 0 {
-		iderr.Name = "The value"
-	}
-
-	return iderr.Name + " is not present in collection. Value is " + iderr.Value
-
 }
