@@ -65,6 +65,12 @@ type CollectionElementNotFoundError struct {
 	Value string
 }
 
+//DocumentNumberError é um erro personalizado para números de documentos pessoais (cpf, cnpj) inválidos.
+type DocumentNumberError struct {
+	Name  string
+	Value string
+}
+
 /*
 * Error functions
  */
@@ -176,4 +182,14 @@ func (cefe *CollectionElementNotFoundError) Error() string {
 	}
 
 	return cefe.Name + " is not present in collection. Value is " + cefe.Value
+}
+
+//Error função retorna a descrição do erro
+func (dne *DocumentNumberError) Error() string {
+
+	if len(dne.Name) == 0 {
+		dne.Name = "The value"
+	}
+
+	return dne.Name + " is a personal document number inválid. Valu is " + dne.Value
 }
