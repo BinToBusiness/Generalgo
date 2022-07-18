@@ -8,7 +8,7 @@ import (
 const (
 
 	//PersonNameValidRegex é um padrão regex para nomes de pessoas válidos.
-	PersonNameValidRegex string = `^((\b[A-zÀ-ú']{2,40}\b)\s*){2,}$`
+	PersonNameValidRegex string = `^((\b[A-zÀ-ú']{2,20}\b)\s{0,1}){1,6}$\b`
 
 	//DocDatabaseIDLength é o tamanho padrão de IDs em bancos baseados em documentos.
 	DocDatabaseIDLength uint8 = 24
