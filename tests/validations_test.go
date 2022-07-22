@@ -8,8 +8,8 @@ import (
 
 func TestStringMatch(t *testing.T) {
 	type args struct {
-		value   string
-		pattern string
+		value    string
+		patterns []string
 	}
 	tests := []struct {
 		name string
@@ -19,25 +19,41 @@ func TestStringMatch(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			name: "SucessMatch",
-			args: args{"Matheus Saraiva", generalgo.PersonNameValidRegex},
+			args: args{"Matheus Saraiva", []string{generalgo.PersonNameValidRegex}},
 			want: true,
 		},
 		{
-			name: "FailMatch",
-			args: args{"Matheus Saraiv4", generalgo.PersonNameValidRegex},
+			name: "SucessTwoMatch",
+			args: args{
+				"Matheus Saraiva",
+				[]string{generalgo.PersonNameValidRegex, `^.{1,40}$`},
+			},
+			want: true,
+		},
+		{
+			name: "FailWithOnePattern",
+			args: args{"Matheus Saraiv4", []string{generalgo.PersonNameValidRegex}},
+			want: false,
+		},
+		{
+			name: "FailTwoPattern",
+			args: args{
+				"Matheus Saraiva da Silva Pereira Gusmão de Souza Cavalcante Texeira de Freitas",
+				[]string{generalgo.PersonNameValidRegex, `^.{1,40}$`},
+			},
 			want: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := generalgo.StringMatch(tt.args.value, tt.args.pattern); got != tt.want {
+			if got := generalgo.StringMatch(tt.args.value, tt.args.patterns...); got != tt.want {
 				t.Errorf("StringMatch() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestCnpjIsValid(t *testing.T) {
+func TestCpfOrCnpjIsValid(t *testing.T) {
 	type args struct {
 		docnum string
 	}
@@ -53,8 +69,18 @@ func TestCnpjIsValid(t *testing.T) {
 			want: true,
 		},
 		{
+			name: "CpfValid",
+			args: args{"74715151200"},
+			want: true,
+		},
+		{
 			name: "CnpjWithInvalidDigit",
 			args: args{"59541264000144"},
+			want: false,
+		},
+		{
+			name: "CpfWithInvalidDigit",
+			args: args{"7475151209"},
 			want: false,
 		},
 		{
@@ -62,11 +88,16 @@ func TestCnpjIsValid(t *testing.T) {
 			args: args{"595412640001"},
 			want: false,
 		},
+		{
+			name: "CpfWithInvalidLen",
+			args: args{"747151512"},
+			want: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := generalgo.CnpjIsValid(tt.args.docnum); got != tt.want {
-				t.Errorf("CnpjIsValid() = %v, want %v", got, tt.want)
+			if got := generalgo.CpfOrCnpjIsValid(tt.args.docnum); got != tt.want {
+				t.Errorf("CpfOrCnpjIsValid() = %v, want %v", got, tt.want)
 			}
 		})
 	}
