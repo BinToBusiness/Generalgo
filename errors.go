@@ -71,6 +71,12 @@ type PersonalDocNumberError struct {
 	Value string
 }
 
+//AssertTypeError é um erro personalizado erros de asserção
+type AssertTypeError struct {
+	Name string
+	Value string
+}
+
 /*
 * Error functions
  */
@@ -192,4 +198,14 @@ func (pdne *PersonalDocNumberError) Error() string {
 	}
 
 	return pdne.Name + " is a personal document number inválid. Valu is " + pdne.Value
+}
+
+//Error função retorna a descrição do erro
+fund (ate *AssertTypeError) Error() string {
+	
+	if len(ate.Name) == 0 {
+		ate.Name = "The value"
+	}
+	
+	return ate.Name + " is not correct asserted type. Value is " + ate.Value
 }
