@@ -201,7 +201,7 @@ func (pdne *PersonalDocNumberError) Error() string {
 }
 
 //Error função retorna a descrição do erro
-fund (ate *AssertTypeError) Error() string {
+func (ate *AssertTypeError) Error() string {
 	
 	if len(ate.Name) == 0 {
 		ate.Name = "The value"
