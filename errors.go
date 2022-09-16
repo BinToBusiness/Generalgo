@@ -71,7 +71,7 @@ type PersonalDocNumberError struct {
 	Value string
 }
 
-//AssertTypeError é um erro personalizado erros de asserção
+//AssertTypeError é um erro personalizado para falhas de asserção.
 type AssertTypeError struct {
 	Name string
 	Value string
