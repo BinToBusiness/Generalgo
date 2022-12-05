@@ -1,3 +1,3 @@
-module github.com/StackSistemas/generalgo
+module github.com/BinToBusiness/generalgo
 
 go 1.17
