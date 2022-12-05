@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/StackSistemas/generalgo"
+	"github.com/BinToBusiness/generalgo"
 )
 
 func TestStringMatch(t *testing.T) {
