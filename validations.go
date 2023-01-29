@@ -1,4 +1,4 @@
-package generalgo
+package Generalgo
 
 import (
 	"regexp"
