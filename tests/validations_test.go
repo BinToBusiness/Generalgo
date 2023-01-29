@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/HertzMaker/generalgo"
+	"github.com/BinToBusiness/Generalgo"
 )
 
 func TestStringMatch(t *testing.T) {
