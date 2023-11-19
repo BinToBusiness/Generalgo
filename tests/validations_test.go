@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/BinToBusiness/Generalgo"
+	"github.com/HertzMaker/Generalgo"
 )
 
 func TestStringMatch(t *testing.T) {
@@ -19,34 +19,34 @@ func TestStringMatch(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			name: "SucessMatch",
-			args: args{"Matheus Saraiva", []string{generalgo.PersonNameValidRegex}},
+			args: args{"Matheus Saraiva", []string{Generalgo.PersonNameValidRegex}},
 			want: true,
 		},
 		{
 			name: "SucessTwoMatch",
 			args: args{
 				"Matheus Saraiva",
-				[]string{generalgo.PersonNameValidRegex, `^.{1,40}$`},
+				[]string{Generalgo.PersonNameValidRegex, `^.{1,40}$`},
 			},
 			want: true,
 		},
 		{
 			name: "FailWithOnePattern",
-			args: args{"Matheus Saraiv4", []string{generalgo.PersonNameValidRegex}},
+			args: args{"Matheus Saraiv4", []string{Generalgo.PersonNameValidRegex}},
 			want: false,
 		},
 		{
 			name: "FailTwoPattern",
 			args: args{
 				"Matheus Saraiva da Silva Pereira Gusmão de Souza Cavalcante Texeira de Freitas",
-				[]string{generalgo.PersonNameValidRegex, `^.{1,40}$`},
+				[]string{Generalgo.PersonNameValidRegex, `^.{1,40}$`},
 			},
 			want: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := generalgo.StringMatch(tt.args.value, tt.args.patterns...); got != tt.want {
+			if got := Generalgo.StringMatch(tt.args.value, tt.args.patterns...); got != tt.want {
 				t.Errorf("StringMatch() = %v, want %v", got, tt.want)
 			}
 		})
@@ -96,7 +96,7 @@ func TestCpfOrCnpjIsValid(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := generalgo.CpfOrCnpjIsValid(tt.args.docnum); got != tt.want {
+			if got := Generalgo.CpfOrCnpjIsValid(tt.args.docnum); got != tt.want {
 				t.Errorf("CpfOrCnpjIsValid() = %v, want %v", got, tt.want)
 			}
 		})

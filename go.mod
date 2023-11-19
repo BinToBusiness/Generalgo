@@ -1,3 +1,3 @@
-module github.com/BinToBusiness/Generalgo
+module github.com/HertzMaker/Generalgo
 
-go 1.17
+go 1.21
